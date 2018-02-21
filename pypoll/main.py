@@ -7,7 +7,7 @@ docs = os.listdir(csvfolder)
 csvfilelist = [doc for doc in docs if doc.endswith(".csv")]
 csvoptions = ""
 for i in range(len(csvfilelist)):
-	csvoptions += " ("+str(i)+") "+ csvfilelist[i]+" "
+	csvoptions += f" ({i}) {csvfilelist[i]}"
 
 print("Choose a file:")
 print(csvoptions)
@@ -29,7 +29,7 @@ with open(csvpath, newline = '') as csvfile:
 			continue
 		votes += 1
 		
-		#if a candidate has not been listed, at them to the dictionary
+		#if a candidate has not been listed, add them to the dictionary
 		#otherwise, increment their vote count
 		if not row[2] in candidates:
 			candidates[row[2]] = 1
@@ -49,11 +49,11 @@ def perc(n):
 
 hline = "-------------------"
 analysis = ["\nElection results", hline,
-			"Total Votes: "+str(votes), hline]
+			f"Total Votes: {votes}", hline]
 
 #add candidates to analysis, calculate winner
 for row in canList:
-	analysis.append(row[0]+": " + perc(row[1]/votes)+" ("+ str(row[1])+")")
+	analysis.append(f"{row[0]}: {perc(row[1]/votes)} ({row[1]})")
 	if row[1] > maxvotes:
 		maxvotes = row[1]
 		winner = row[0]
