@@ -7,7 +7,7 @@ docs = os.listdir(csvfolder)
 csvfilelist = [doc for doc in docs if doc.endswith(".csv")]
 csvoptions = ""
 for i in range(len(csvfilelist)):
-	csvoptions += " ("+str(i)+") "+ csvfilelist[i]+" "
+	csvoptions += f" ({i}) {csvfilelist[i]}"
 
 print("Choose a file:")
 print(csvoptions)
@@ -56,11 +56,11 @@ avgChange = round(avgChange)
 
 #save output lines to a list
 analysis = ["\nFinancial Analysis \n-------------------",
-			"Total Months: "+ str(months),
-			"Total Revenue: $" + str(totalRev),
-			"Average Revenue Change: $" + str(avgChange),
-			"Greatest Increase in Revenue: " + maxrow[0] + " ($"+str(maxrow[1])+")",
-			"Greatest Decrease in Revenue: " + minrow[0] + " ($"+str(minrow[1])+")"]
+			f"Total Months: {months}",
+			f"Total Revenue: ${totalRev}",
+			f"Average Revenue Change: ${avgChange}",
+			f"Greatest Increase in Revenue: {maxrow[0]} (${maxrow[1]})",
+			f"Greatest Decrease in Revenue: {minrow[0]} (${minrow[1]})"]
 
 #write output to file and print to terminal
 with open("analysis.txt","w") as output:
