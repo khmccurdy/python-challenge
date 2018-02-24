@@ -52,7 +52,9 @@ def format(csvpath):
 			os.makedirs(outdir)
 		
 		#set output path to output\<source_name>_formatted.csv
-		output_path = os.path.join(outdir, csvpath.split("\\")[-1][:-4] + "_formatted.csv")
+		output_name = os.path.split(csvpath)[1][:-4] + "_formatted.csv"
+		output_path = os.path.join(outdir, output_name)
+		print(output_path)
 		
 		#write newlist into a file
 		with open(output_path, 'w', newline = '') as output_file:
